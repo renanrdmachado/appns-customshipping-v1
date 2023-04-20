@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <ul>
-                        <li class="p-6 flex justify-between hover:bg-gray-700 rounded-lg">
+                        <li class="p-6 flex justify-between dark:hover:bg-gray-700 hover:bg-gray-100 rounded-lg">
                             <div>
                                 <header>
                                     @if( $nuvemshopActive )
@@ -25,7 +25,7 @@
                                 <x-primary-link href="{{ env('NS_INSTALL_URL') }}"><i class="fa-solid fa-share-from-square"></i></x-primary-link>
                             </div>
                         </li>
-                        <li class="p-6 flex justify-between hover:bg-gray-700 rounded-lg">
+                        <li class="p-6 flex justify-between dark:hover:bg-gray-700 hover:bg-gray-100 rounded-lg">
                             <div>
                                 <header>
                                     @if( $hasCeps )
@@ -40,7 +40,7 @@
                                 <x-primary-link href="{{ Route('shipping') }}"><i class="fa-solid fa-share-from-square"></i></x-primary-link>
                             </div>
                         </li>
-                        <li class="p-6 flex justify-between hover:bg-gray-700 rounded-lg">
+                        <li class="p-6 flex justify-between dark:hover:bg-gray-700 hover:bg-gray-100 rounded-lg">
                             <div>
                                 <header>
                                     @if( $storeActive )
@@ -49,6 +49,9 @@
                                         <span class="px-2 text-gray-500 text-red-600"><i class="fa-solid fa-circle-exclamation"></i></span>
                                     @endif
                                     <strong>Assinatura</strong>
+                                    @if( $isFreeTrial )
+                                        <span class="bg-gray-500 text-xs rounded px-2">FREE TRIAL</span>
+                                    @endif
                                 </header>
                             </div>
                             <div>

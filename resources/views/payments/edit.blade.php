@@ -23,19 +23,28 @@
                                 @if( !$storeActive )
                                     <p class="mb-6"><i class="fa-solid fa-circle-exclamation"></i> Sua assinatura ainda não está ativa!</p>
                                 @else
-                                    <p class="mb-6"><i class="fa-regular fa-circle-check"></i> Sua assinatura está ativa!</p>
+                                    <p class="mb-6">
+                                        <i class="fa-regular fa-circle-check"></i>
+                                        Sua assinatura está ativa!
+                                        @if( $isFreeTrial )
+                                            <span class="bg-gray-500 text-xs rounded px-2">FREE TRIAL</span>
+                                        @endif
+                                    </p>
                                 @endif
 
                                 @if( $store->payments_data )
                                 <ul class="mb-6">
                                     <li>
-                                        <strong>Status: </strong> {{ $store->payments_status }}
+                                        <strong>Status: </strong>
+                                        {{ $store->payments_status }}
                                     </li>
+                                    <!--
                                     @if( $store->payments_status=="RECEIVED" )
                                     <li>
                                         <strong>Próximo pagamento: </strong> {{ $store->payments_next_date }}
                                     </li>
                                     @endif
+                                    -->
                                     <li>
                                         @php
                                             $invoice = json_decode($store->payments_data)->invoiceUrl;

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 Use \Carbon\Carbon;
 use Illuminate\Support\Str;
+use App\Models\App;
 
 
 class AppShipping extends Model
@@ -93,10 +94,11 @@ class AppShipping extends Model
             ->get('payments_status')
             ->first();
 
-        // dd( $status );
-        if ( !isset($status->payments_status) || $status->payments_status != "RECEIVED" && $status->payments_status != "RECEIVED_IN_CASH") {
-            return  ["Error"=> true] ;
-            return;
+        if( App::isFreeTrial($find['store_id']) ) {
+            // continue;
+        }else if ( !isset($status->payments_status) || $status->payments_status != "RECEIVED" && $status->payments_status != "RECEIVED_IN_CASH" ) {
+            return ["error"=> true,"message"=>$status];
+
         }
 
         $inputs = array(

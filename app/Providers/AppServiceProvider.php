@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
 
             $storeActive=App::storeActive();
             View::share('storeActive',$storeActive); 
+
+            $isFreeTrial=App::isFreeTrial();
+            View::share('isFreeTrial',$isFreeTrial); 
             
             $nuvemshopActive=App::nuvemshopActive();
             View::share('nuvemshopActive',$nuvemshopActive); 

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->longText('payments_next_date')->nullable();
             $table->longText('payments_cus_id')->nullable();
             $table->longText('payments_sub_id')->nullable();
+            $table->string('freetrial')->nullable();
             $table->timestamps();
         });
     }

@@ -45,11 +45,15 @@
         </div>
 
         <div>
-        <p class="mt-6 text-gray-600 dark:text-gray-400">
-            <input type="checkbox" name="payments-consent" class="" value="on" required>
-            Ao prosseguir, você declara estar ciente e de acordo com nossas <a href="{{ Route('policy') }}" class="underline">políticas</a>.
-        </p>
-    </div>
+            <p class="mt-6 text-gray-600 dark:text-gray-400">
+                <input type="checkbox" name="payments-consent" class="" value="on" required>
+                Ao prosseguir, você declara estar ciente e de acordo com nossas <a href="{{ Route('policy') }}" class="underline">políticas</a>.
+            </p>
+        </div>
+
+        <div class="form-alert">
+            <x-alert-store>Erro! Verifique se seus dados foram digitados corretamente!</x-alert-store>
+        </div>
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Assinar') }}</x-primary-button>

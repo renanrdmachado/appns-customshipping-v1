@@ -29,9 +29,11 @@ class NsShipping extends Model
             'User-Agent' => 'Frete Fixo (sampisolution.com.br)'
         ])->get($url);
 
+        $NsApiGetJson = $NsApiGet->json();
+        
         $find = false;
-        if( count($NsApiGet->json())>0 ) {
-            $find = array_filter($NsApiGet->json(), function ($v, $k) {
+        if( gettype($NsApiGetJson) == 'object' && count($NsApiGetJson)>0 || gettype($NsApiGetJson) == 'array' && count($NsApiGetJson)>0 ) {
+            $find = array_filter($NsApiGetJson, function ($v, $k) {
                 
                 if( $v['name'] == env("NS_SHIPPINGCARRIER") ) {
                     return $v;

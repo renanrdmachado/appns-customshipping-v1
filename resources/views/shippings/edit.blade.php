@@ -11,10 +11,15 @@
 
             <div class="dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 
-                <div class="p-6 dark:bg-gray-800 dark:text-gray-100">
-                    <div class="row">
-                        <div class="col-md-12">
+                <div class="p-6 dark:bg-gray-800 dark:text-gray-100 bg-white">
+                    <div class="flex justify-between">
+                        <div class="col-md-6">
                             <strong>Edite as faixas de CEP para sua loja!</strong>
+
+                            
+                        </div>
+                        <div class="text-sm text-gray-300">
+                            <p>Em breve: upload de planilha CSV.</p>
                         </div>
                         <!--
                         <div class="col-md-12 mt-2">
@@ -30,7 +35,7 @@
                     
                 </div>
 
-                <div class="p-6 dark:bg-gray-800 border-gray-200">
+                <div class="p-6 dark:bg-gray-800 border-gray-200 bg-white">
 
                     
                     @if(!$nuvemshopActive)
@@ -40,7 +45,7 @@
                     @if($nuvemshopActive)
                     <form id="form-zipcodes-range" method="POST">
                         <table id="zipcodes-range" class="w-full text-gray-200">
-                            <tr>
+                            <tr class="text-gray-600 dark:text-gray-300">
                                 <th>Nome</th>
                                 <th>Ceps - De</th>
                                 <th>Ceps - Até</th>
@@ -57,15 +62,15 @@
                                         $active = (isset($shipping->active) && $shipping->active == "on") ? 1 : 0 ;
                                     @endphp
                                     @if( isset($shipping->name) )
-                                    <tr class="zipcodes-range-item">
-                                        <td><x-text-input type="text" name="name[]" placeholder="Nome" class="w-full border-gray-100" value="{{ $shipping->name }}" /></td>
-                                        <td><x-text-input type="text" name="from[]" minlength="8" maxlength="8" placeholder="de" class="w-full border-gray-100" value="{{ $shipping->from }}"/></td>
-                                        <td><x-text-input type="text" name="to[]" minlength="8" maxlength="8" placeholder="até" class="w-full border-gray-100" value="{{ $shipping->to }}"/></td>
-                                        <td><x-text-input type="number" name="min_days[]" placeholder="Min" min="0" class="w-full border-gray-100" value="{{ $shipping->min_days }}"/></td>
-                                        <td><x-text-input type="number" name="max_days[]" placeholder="Max" min="0" class="w-full border-gray-100" value="{{ $shipping->max_days }}"/></td>
-                                        <td><x-text-input type="text" name="price[]" placeholder="Preço" class="w-full border-gray-100" value="{{ $shipping->price }}"/></td>
+                                    <tr class="zipcodes-range-item activated text-gray-600">
+                                        <td><x-text-input type="text" name="name[]" placeholder="Nome" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" value="{{ $shipping->name }}" /></td>
+                                        <td><x-text-input type="text" name="from[]" minlength="8" maxlength="8" placeholder="de" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" value="{{ $shipping->from }}"/></td>
+                                        <td><x-text-input type="text" name="to[]" minlength="8" maxlength="8" placeholder="até" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" value="{{ $shipping->to }}"/></td>
+                                        <td><x-text-input type="number" name="min_days[]" placeholder="Min" min="0" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" value="{{ $shipping->min_days }}"/></td>
+                                        <td><x-text-input type="number" name="max_days[]" placeholder="Max" min="0" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" value="{{ $shipping->max_days }}"/></td>
+                                        <td><x-text-input type="text" name="price[]" placeholder="Preço" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" value="{{ $shipping->price }}"/></td>
                                         <td width="90">
-                                            <select name="active[]" value="{{ isset($shipping->active) ? $shipping->active : 'null' }}" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm w-full border-gray-100">
+                                            <select name="active[]" value="{{ isset($shipping->active) ? $shipping->active : 'null' }}" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600">
                                                 <option value="on" {{ isset($shipping->active) && $shipping->active == 'on' ? 'selected'  : '' }}>On</option>
                                                 <option value="off" {{ isset($shipping->active) && $shipping->active == 'off' ? 'selected' : '' }}>Off</option>
                                             </select>
@@ -88,15 +93,15 @@
                                 </td>
                             </tr>
 
-                            <tr class="zipcodes-range-item new hidden">
-                                <td><x-text-input type="text" name="name[]" placeholder="Nome" class="w-full border-gray-100" disabled/></td>
-                                <td><x-text-input type="text" name="from[]" minlength="8" maxlength="8" placeholder="de" class="w-full border-gray-100" disabled/></td>
-                                <td><x-text-input type="text" name="to[]"  minlength="8" maxlength="8" placeholder="até" class="w-full border-gray-100" disabled/></td>
-                                <td><x-text-input type="number" name="min_days[]" placeholder="Min" min="0" class="w-full border-gray-100" disabled/></td>
-                                <td><x-text-input type="number" name="max_days[]" placeholder="Max" min="0" class="w-full border-gray-100" disabled/></td>
-                                <td><x-text-input type="text" name="price[]" placeholder="Preço" class="w-full border-gray-100" disabled/></td>
+                            <tr class="zipcodes-range-item text-gray-600 new hidden">
+                                <td><x-text-input type="text" name="name[]" placeholder="Nome" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" disabled/></td>
+                                <td><x-text-input type="text" name="from[]" minlength="8" maxlength="8" placeholder="de" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" disabled/></td>
+                                <td><x-text-input type="text" name="to[]"  minlength="8" maxlength="8" placeholder="até" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" disabled/></td>
+                                <td><x-text-input type="number" name="min_days[]" placeholder="Min" min="0" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" disabled/></td>
+                                <td><x-text-input type="number" name="max_days[]" placeholder="Max" min="0" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" disabled/></td>
+                                <td><x-text-input type="text" name="price[]" placeholder="Preço" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600" disabled/></td>
                                 <td>
-                                    <select name="active[]" value="null" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm w-full border-gray-100">
+                                    <select name="active[]" value="null" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full text-gray-600">
                                         <option value="on">On</option>
                                         <option value="off">Off</option>
                                     </select>
@@ -109,6 +114,10 @@
                             </tr>
 
                         </table>
+
+                        <div class="zipcode-table-alert">
+                               
+                        </div>
 
                         <div class="mt-4 text-right">
                             <x-primary-button class="js-save"><i class="fa-regular fa-floppy-disk"></i> Salvar</x-primary-button>

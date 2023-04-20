@@ -5,7 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Frete Personalizado') }}</title>
+
+        <!--FAVICON-->
+        <link rel="icon" type="image/png" href="{{ Asset('/build/assets/favicon.png') }}">
+        <link rel="icon" type="image/vnd.microsoft.icon" href="{{ Asset('/build/assets/favicon.png') }}">
+        <link rel="apple-touch-icon" sizes="300x300" href="{{ Asset('/build/assets/favicon.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="300x300" href="{{ Asset('/build/assets/favicon.png') }}">
+        <!--/FAVICON-->
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

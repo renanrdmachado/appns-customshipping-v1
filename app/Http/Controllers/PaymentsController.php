@@ -36,26 +36,25 @@ class PaymentsController extends Controller
     }
 
     public function webhook( Request $data ) {
-        if( !$data['payment'] )
+        if( !$data->payment || !isset($data->payment['subscription']) )
             return json_encode([ "erro" => "Array 'payment' não encontrada!" ]);
 
-        if( !str_starts_with($data['payment']['externalReference'],"app_") )
-            return json_encode([ "erro" => "Array 'externalReference' não começa com 'app_'!" ]);
+        // if( !str_starts_with($data['payment']['externalReference'],"app_") )
+        //     return json_encode([ "erro" => "Array 'externalReference' não começa com 'app_'!" ]);
 
-        $user_id = str_replace("app_","",$data['payment']['externalReference']);
+        // $user_id = str_replace("app_","",$data['payment']['externalReference']);
 
         DB::table('store')
-            ->where('user_id',$user_id)
+            ->where('payments_cus_id',$data->payment['customer'])
             ->update([
-                'payments_cus_id'=>$data['payment']['customer'],
-                'payments_sub_id'=>$data['payment']['subscription'],
-                'payments_next_date'=>$data['payment']['dueDate'],
-                'payments_status'=>$data['payment']['status'],
-                'payments_data'=>json_encode($data['payment']),
+                'payments_sub_id'=>$data->payment['subscription'],
+                'payments_next_date'=>$data->payment['dueDate'],
+                'payments_status'=>$data->payment['status'],
+                'payments_data'=>json_encode($data->payment),
                 'updated_at'    => Carbon::now()
             ]);
 
-        return json_encode([ "success" => "Usuário {$user_id} atualizado com sucesso!" ]);
+        return json_encode([ "success" => "Usuário {$data->payment['customer']} atualizado com sucesso!" ]);
     }
 
 }

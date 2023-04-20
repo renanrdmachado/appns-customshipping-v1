@@ -19,7 +19,8 @@ use App\Http\Controllers\AppShippingController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect('login');
 });
 
 Route::get('/dashboard', function () {
@@ -51,5 +52,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::post('/shipping/response', [AppShippingController::class, 'find']);
+Route::post('/webhook', [PaymentsController::class, 'webhook']);
 
 require __DIR__.'/auth.php';
